@@ -1,0 +1,29 @@
+{
+  "name": "pace-sports-api",
+  "version": "1.0.0",
+  "description": "API oficial do Pace Sports.",
+  "main": "./src/server.js",
+  "scripts": {
+    "dev": "node --watch ."
+  },
+  "keywords": [
+    "pace-sports",
+    "api",
+    "node",
+    "express",
+    "javascript",
+    "pace-sports-api"
+  ],
+  "author": {
+    "name": "Lucas Galdino",
+    "url": "https://github.com/lucasfgaldinos"
+  },
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.11"
+  }
+}

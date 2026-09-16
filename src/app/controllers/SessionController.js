@@ -1,5 +1,7 @@
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import * as Yup from 'yup';
+import authConfig from '../../config/auth.js';
 import { User } from '../models/User.js';
 
 // biome-ignore lint: false positive
@@ -35,11 +37,16 @@ export class SessionController {
 
     if (!isSamePassword) return incorrectEmailOrPassword();
 
+    const token = jwt.sign({ id: userExists.id }, authConfig.secret, {
+      expiresIn: authConfig.expiresIn,
+    });
+
     return res.status(201).json({
       id: userExists.id,
       name: userExists.name,
       email: userExists.email,
       is_admin: userExists.is_admin,
+      token,
     });
   }
 }

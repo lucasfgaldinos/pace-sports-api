@@ -15,6 +15,7 @@ export const authMiddleware = (req, res, next) => {
       }
 
       req.userId = decoded.id;
+      req.userIsAdmin = decoded.is_admin;
     });
   } catch (err) {
     return res.status(400).json({ error: err.message });

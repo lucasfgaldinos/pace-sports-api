@@ -37,9 +37,13 @@ export class SessionController {
 
     if (!isSamePassword) return incorrectEmailOrPassword();
 
-    const token = jwt.sign({ id: userExists.id }, authConfig.secret, {
-      expiresIn: authConfig.expiresIn,
-    });
+    const token = jwt.sign(
+      { id: userExists.id, is_admin: userExists.is_admin },
+      authConfig.secret,
+      {
+        expiresIn: authConfig.expiresIn,
+      },
+    );
 
     return res.status(201).json({
       id: userExists.id,

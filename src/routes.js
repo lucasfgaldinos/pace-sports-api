@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import multer from 'multer';
+import { CategoryController } from './app/controllers/CategoryController.js';
 import { ProductController } from './app/controllers/ProductController.js';
 import { SessionController } from './app/controllers/SessionController.js';
 import { UserController } from './app/controllers/UserController.js';
@@ -15,5 +16,8 @@ routes.post('/users', await UserController.store);
 routes.post('/session', await SessionController.store);
 
 routes.use(authMiddleware);
+
 routes.post('/products', upload.single('file'), await ProductController.store);
 routes.get('/products', await ProductController.index);
+routes.post('/categories', await CategoryController.store);
+routes.get('/categories', await CategoryController.index);

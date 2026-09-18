@@ -7,7 +7,6 @@ export class Product extends Model {
       {
         name: Sequelize.STRING,
         price: Sequelize.INTEGER,
-        category: Sequelize.STRING,
         path: Sequelize.STRING,
         url: {
           type: Sequelize.VIRTUAL,
@@ -18,5 +17,13 @@ export class Product extends Model {
       },
       { sequelize, tableName: 'products' },
     );
+  }
+
+  static associate(models) {
+    // biome-ignore lint: false positive
+    this.belongsTo(models.Category, {
+      foreignKey: 'category_id',
+      as: 'category',
+    });
   }
 }

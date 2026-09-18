@@ -16,6 +16,10 @@ class Database {
     models.forEach((model) => {
       model.init(this.connection);
     });
+
+    models.forEach((model) => {
+      if (model.associate) model.associate(this.connection.models);
+    });
   }
 }
 

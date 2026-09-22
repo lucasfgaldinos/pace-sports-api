@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import authConfig from '../config/auth.js';
+import authConfig from '../../config/auth.js';
 
 export const authMiddleware = (req, res, next) => {
   if (!req.headers.authorization) {

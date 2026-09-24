@@ -6,6 +6,7 @@ export class Product extends Model {
     super.init(
       {
         name: Sequelize.STRING,
+        description: Sequelize.STRING,
         price: Sequelize.INTEGER,
         path: Sequelize.STRING,
         url: {

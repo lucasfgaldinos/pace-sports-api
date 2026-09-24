@@ -40,7 +40,7 @@ export class UserController {
 
     if (userExists) {
       return res
-        .status(400)
+        .status(409)
         .json({ message: 'This email address is already in use.' });
     }
 

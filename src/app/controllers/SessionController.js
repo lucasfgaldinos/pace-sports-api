@@ -15,7 +15,7 @@ export class SessionController {
     const isValid = schema.isValidSync(req.body, { strict: true });
 
     function incorrectEmailOrPassword() {
-      return res.status(400).json({ message: 'Incorrect email or password.' });
+      return res.status(401).json({ message: 'Incorrect email or password.' });
     }
 
     if (!isValid) return incorrectEmailOrPassword();

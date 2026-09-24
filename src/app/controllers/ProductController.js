@@ -12,6 +12,7 @@ export class ProductController {
         .min(3, 'Name must be at least 3 characters')
         .max(100, 'Name cannot exceed 100 characters'),
       price: Yup.number().required('Price is required'),
+      description: Yup.string().required('Description is required'),
       category_id: Yup.number().required('category_id is required'),
     });
 
@@ -21,11 +22,12 @@ export class ProductController {
       return res.status(400).json({ errors: err.errors });
     }
 
-    const { name, price, category_id } = req.body;
+    const { name, description, price, category_id } = req.body;
     const { filename: path } = req.file;
 
     const product = await Product.create({
       name,
+      description,
       price,
       category_id,
       path,

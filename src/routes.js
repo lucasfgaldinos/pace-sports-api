@@ -46,6 +46,7 @@ routes.put(
 );
 routes.get('/categories', await CategoryController.index);
 routes.post('/orders', await OrderController.store);
+routes.get('/orders', await OrderController.index);
 routes.patch('/orders/:id', adminMiddleware, await OrderController.update);
 
 routes.post('/create-payment-intent', CreatePaymentIntentController.store);

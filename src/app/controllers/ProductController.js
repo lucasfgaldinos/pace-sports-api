@@ -103,7 +103,7 @@ export class ProductController {
     return res.status(200).json(products);
   }
 
-  static async delete(_, res) {
+  static async delete(req, res) {
     const { id } = req.params;
 
     const productExists = await Product.findOne({
@@ -122,7 +122,7 @@ export class ProductController {
           id,
         },
       });
-      return res.status(200).json(products);
+      return res.status(200).json();
     } catch (_err) {
       return res.status(400).json({ error: 'Product not found.' });
     }

@@ -39,6 +39,13 @@ routes.post(
   await CategoryController.store,
 );
 routes.put(
+  '/products/:id',
+  adminMiddleware,
+  upload.single('file'),
+  await ProductController.update,
+);
+routes.delete('/products/:id', adminMiddleware, await ProductController.delete);
+routes.put(
   '/categories/:id',
   adminMiddleware,
   upload.single('file'),
